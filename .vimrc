@@ -41,3 +41,14 @@ set formatoptions-=cro
 
 " Auto-remove all trailing whitespace on save of C/C++/Python source files
 autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
+
+" Windows random highlighting issue (see
+" https://superuser.com/questions/457911/in-vim-background-color-changes-on-scrolling/588243#588243)
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
+endif
+
+" Highlight symbol when use 'gd' to search definition
+set hlsearch
